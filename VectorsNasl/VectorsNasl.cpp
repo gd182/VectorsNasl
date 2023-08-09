@@ -3,7 +3,12 @@
 #include <iostream>
 #include <math.h>
 
-class VectorOne
+class Vector {
+public:
+    virtual double VLong() = 0;
+};
+
+class VectorOne : public Vector
 {
 public:
     VectorOne()
@@ -16,7 +21,7 @@ public:
         this->x1 = x1;
     }
 
-    virtual double VLong()
+    double VLong() override
     {
         return fabs(x1);
     }
@@ -24,23 +29,26 @@ protected:
     double x1;
 };
 
-class VectorTwo : public VectorOne
+class VectorTwo : public Vector
 {
 public:
     VectorTwo()
     {
+        this->x1 = 0;
         this->x2 = 0;
     }
 
-    VectorTwo(double x1, double x2) : VectorOne(x1)
+    VectorTwo(double x1, double x2)
     {
+        this->x1 = x1;
         this->x2 = x2;
     }
-    virtual double VLong() override
+    double VLong() override
     {
         return sqrt(x1 * x1 + x2 * x2);
     }
 protected:
+    double x1;
     double x2;
 };
 
@@ -131,7 +139,7 @@ void PrintVect(OneList<T>& List) {
 
 int main()
 {
-    OneList<VectorOne> CVector;
+    OneList<Vector> CVector;
     VectorTwo a1(1, 3.4);
     VectorOne a2(2);
     VectorTwo a3(40, 3.8);
@@ -143,6 +151,7 @@ int main()
     CVector.Add(&a3);
     CVector.Add(&a4);
     CVector.Add(&a5);
+    CVector.Add(&a6);
     CVector.PrintVect();
     //CVector.Add(&a6);
     //PrintVect<VectorTwo>((OneList<VectorTwo>)CVector);
