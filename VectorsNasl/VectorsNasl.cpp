@@ -52,6 +52,30 @@ protected:
     double x2;
 };
 
+class VectorThree : public Vector
+{
+public:
+    VectorThree() {
+        this->x1 = 0;
+        this->x2 = 0;
+        this->x3 = 0;
+    }
+
+    VectorThree(double x1, double x2, double x3) {
+        this->x1 = x1;
+        this->x2 = x2;
+        this->x3 = x3;
+    }
+
+    double VLong() {
+        return sqrt(x1 * x1 + x2 * x2 + x3 * x3);
+    }
+private:
+    double x1;
+    double x2;
+    double x3;
+};
+
 template <typename T>
 struct Element {
     Element* NextElem;
@@ -146,12 +170,14 @@ int main()
     VectorTwo a4(1, 10.4);
     VectorTwo a5(80, 13.7);
     VectorOne a6(1);
+    VectorThree a7(1, 2, 3);
     CVector.Add(&a1);
     CVector.Add(&a2);
     CVector.Add(&a3);
     CVector.Add(&a4);
     CVector.Add(&a5);
     CVector.Add(&a6);
+    CVector.Add(&a7);
     CVector.PrintVect();
     //CVector.Add(&a6);
     //PrintVect<VectorTwo>((OneList<VectorTwo>)CVector);
