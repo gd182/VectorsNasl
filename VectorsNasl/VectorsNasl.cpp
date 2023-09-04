@@ -25,6 +25,10 @@ public:
     {
         return fabs(x1);
     }
+
+    void EditCord(double x1) {
+        this->x1 = x1;
+    }
 protected:
     double x1;
 };
@@ -46,6 +50,11 @@ public:
     double VLong() override
     {
         return sqrt(x1 * x1 + x2 * x2);
+    }
+
+    void EditCoord(double x1, double x2) {
+        this->x1 = x1;
+        this->x2 = x2;
     }
 protected:
     double x1;
@@ -69,6 +78,12 @@ public:
 
     double VLong() {
         return sqrt(x1 * x1 + x2 * x2 + x3 * x3);
+    }
+
+    void EditCoord(double x1, double x2, double x3) {
+        this->x1 = x1;
+        this->x2 = x2;
+        this->x3 = x3;
     }
 private:
     double x1;
@@ -178,6 +193,7 @@ int main()
     CVector.Add(&a5);
     CVector.Add(&a6);
     CVector.Add(&a7);
+    //a1.EditCoord(1, 1);
     CVector.PrintVect();
     //CVector.Add(&a6);
     //PrintVect<VectorTwo>((OneList<VectorTwo>)CVector);
